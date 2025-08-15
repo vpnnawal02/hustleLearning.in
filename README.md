@@ -5,7 +5,7 @@
 ---
 
 ## 🌐 Live Preview
-[🔗 View Live Site](https://vpnnawal02.github.io/hustleLearning.in/)
+[🔗 View Live Site](https://hustlelearning-in-0kjy.onrender.com)
 
 ---
 

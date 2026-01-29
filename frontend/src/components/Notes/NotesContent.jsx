@@ -1,3 +1,4 @@
+import React from 'react';
 export default function NotesContent({ title, sections }) {
     return (
         <div className="w-full flex justify-center bg-gray-200 min-h-screen py-8">

@@ -1,3 +1,4 @@
+import React from 'react';
 export default function ClassSelection({ onSelectClass }) {
     const classes = [
         { num: '6', icon: '📘', color: 'from-blue-500/20 to-blue-600/20' },

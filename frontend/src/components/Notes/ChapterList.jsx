@@ -1,3 +1,4 @@
+import React from 'react';
 export default function ChapterList({ chapters, subject, onSelectChapter }) {
     return (
         <div className="animate-fade-in-up">

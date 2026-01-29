@@ -1,3 +1,4 @@
+import React from 'react';
 export default function SubjectSelection({ subjects, classNum, onSelectSubject }) {
     // Subject icons and colors
     const subjectConfig = {

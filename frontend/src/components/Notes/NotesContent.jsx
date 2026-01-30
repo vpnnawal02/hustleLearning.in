@@ -2,7 +2,7 @@ import React from 'react';
 export default function NotesContent({ title, sections }) {
     return (
         <div className="w-full flex justify-center bg-gray-200 min-h-screen py-8">
-            <div className="flex flex-col bg-white w-full sm:w-[80%] lg:w-[60%] px-8 py-10 gap-6 shadow-2xl rounded-lg">
+            <div className="flex flex-col bg-white w-full sm:w-[80%] lg:w-[60%] px-8 py-10 gap-6 shadow-2xl rounded-md">
 
                 <h1 className="uppercase text-4xl sm:text-5xl font-bold mb-4 text-gray-900">
                     {title}

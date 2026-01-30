@@ -19,30 +19,30 @@ export default function Navbar() {
                     </Link>
 
                     {/* Desktop Navigation Links */}
-                    <div className="hidden md:flex space-x-10">
+                    <div className="hidden md:flex space-x-10 ">
                         <Link
                             to="/"
-                            className="relative inline-block font-medium text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                            className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                         >
-                            HOME
+                            Home
                         </Link>
                         <Link
                             to="/notes"
-                            className="relative inline-block font-medium text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                            className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                         >
-                            NOTES
+                            Notes
                         </Link>
                         <Link
                             to="/tests"
-                            className="relative inline-block font-medium text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                            className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                         >
-                            TESTS
+                            Tests
                         </Link>
                         <Link
                             to="/ncert"
-                            className="relative inline-block font-medium text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                            className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                         >
-                            NCERT SOLUTIONS
+                            NCERT Solutions
                         </Link>
                     </div>
 
@@ -50,7 +50,7 @@ export default function Navbar() {
                     <div className="hidden ">
                         <Link
                             to="/login"
-                            className="relative inline-block font-medium text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                            className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.25 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                         >
                             Login
                         </Link>
@@ -83,35 +83,35 @@ export default function Navbar() {
                     <Link
                         to="/"
                         onClick={toggleMenu}
-                        className="block text-gray-300 hover:text-primary hover:bg-dark-gray px-3 py-2 rounded-lg transition-all duration-300"
+                        className="block text-gray-300 hover:text-primary hover:bg-dark-gray px-3 py-2 rounded-md transition-all duration-300"
                     >
                         Home
                     </Link>
                     <Link
                         to="/notes"
                         onClick={toggleMenu}
-                        className="block text-gray-300 hover:text-primary hover:bg-dark-gray px-3 py-2 rounded-lg transition-all duration-300"
+                        className="block text-gray-300 hover:text-primary hover:bg-dark-gray px-3 py-2 rounded-md transition-all duration-300"
                     >
                         Notes
                     </Link>
                     <Link
                         to="/tests"
                         onClick={toggleMenu}
-                        className="block text-gray-300 hover:text-primary hover:bg-dark-gray px-3 py-2 rounded-lg transition-all duration-300"
+                        className="block text-gray-300 hover:text-primary hover:bg-dark-gray px-3 py-2 rounded-md transition-all duration-300"
                     >
                         Tests
                     </Link>
                     <Link
                         to="/ncert"
                         onClick={toggleMenu}
-                        className="block text-gray-300 hover:text-primary hover:bg-dark-gray px-3 py-2 rounded-lg transition-all duration-300"
+                        className="block text-gray-300 hover:text-primary hover:bg-dark-gray px-3 py-2 rounded-md transition-all duration-300"
                     >
                         NCERT Solutions
                     </Link>
                     <Link
                         to="/login"
                         onClick={toggleMenu}
-                        className="hidden bg-primary text-dark text-center px-3 py-2 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300"
+                        className="hidden bg-primary text-dark text-center px-3 py-2 rounded-md font-semibold hover:bg-yellow-500 transition-all duration-300"
                     >
                         Login
                     </Link>

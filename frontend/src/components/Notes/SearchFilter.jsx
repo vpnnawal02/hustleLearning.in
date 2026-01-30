@@ -74,7 +74,7 @@ export default function SearchFilter({ searchQuery, setSearchQuery, selectedClas
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search by keyword, topic, or chapter name..."
-                    className="w-full bg-[#121212] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#FFC107] transition-colors"
+                    className="w-full bg-[#121212] border border-gray-700 rounded-md px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#FFC107] transition-colors"
                 />
             </div>
 
@@ -89,7 +89,7 @@ export default function SearchFilter({ searchQuery, setSearchQuery, selectedClas
                     <select
                         value={filterClass}
                         onChange={handleClassChange}
-                        className="w-full bg-[#121212] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#FFC107] transition-colors cursor-pointer"
+                        className="w-full bg-[#121212] border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC107] transition-colors cursor-pointer"
                     >
                         <option value="">All Classes</option>
                         {allClasses.map((cls) => (
@@ -109,7 +109,7 @@ export default function SearchFilter({ searchQuery, setSearchQuery, selectedClas
                         value={filterSubject}
                         onChange={handleSubjectChange}
                         disabled={!filterClass}
-                        className="w-full bg-[#121212] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#FFC107] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full bg-[#121212] border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC107] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <option value="">All Subjects</option>
                         {getFilterSubjects().map((subject) => (
@@ -129,7 +129,7 @@ export default function SearchFilter({ searchQuery, setSearchQuery, selectedClas
                         value={filterChapter}
                         onChange={(e) => setFilterChapter(e.target.value)}
                         disabled={!filterSubject}
-                        className="w-full bg-[#121212] border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#FFC107] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full bg-[#121212] border border-gray-700 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC107] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <option value="">All Chapters</option>
                         {getFilterChapters().map((chapter) => (
@@ -145,7 +145,7 @@ export default function SearchFilter({ searchQuery, setSearchQuery, selectedClas
             <div className="flex flex-col sm:flex-row gap-3">
                 <button
                     onClick={handleSearch}
-                    className="flex-1 bg-[#FFC107] text-[#121212] font-semibold py-3 rounded-lg hover:bg-[#FFD54F] transition-all flex items-center justify-center gap-2"
+                    className="flex-1 bg-[#FFC107] text-[#121212] font-semibold py-3 rounded-md hover:bg-[#FFD54F] transition-all flex items-center justify-center gap-2"
                 >
                     <span>🔍</span>
                     Search Notes
@@ -153,7 +153,7 @@ export default function SearchFilter({ searchQuery, setSearchQuery, selectedClas
 
                 <button
                     onClick={handleClear}
-                    className="sm:w-auto px-6 bg-[#121212] border border-gray-700 text-gray-300 py-3 rounded-lg hover:border-[#FFC107] hover:text-[#FFC107] transition-all"
+                    className="sm:w-auto px-6 bg-[#121212] border border-gray-700 text-gray-300 py-3 rounded-md hover:border-[#FFC107] hover:text-[#FFC107] transition-all"
                 >
                     Clear Filters
                 </button>
@@ -197,7 +197,7 @@ export default function SearchFilter({ searchQuery, setSearchQuery, selectedClas
             )}
 
             {/* Quick Search Tips */}
-            <div className="mt-4 bg-[#121212] rounded-lg p-3">
+            <div className="mt-4 bg-[#121212] rounded-md p-3">
                 <div className="flex items-start gap-2 text-xs text-gray-400">
                     <span>💡</span>
                     <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 export default function Breadcrumb({ selectedClass, selectedSubject, selectedChapter, onReset }) {
     return (
-        <div className="bg-[#1E1E1E] border border-gray-800 rounded-lg px-4 py-3 flex items-center gap-2 text-sm mb-6 overflow-x-auto">
+        <div className="bg-[#1E1E1E] border border-gray-800 rounded-md px-4 py-3 flex items-center gap-2 text-sm mb-6 overflow-x-auto">
             {/* Home */}
             <button
                 onClick={onReset}

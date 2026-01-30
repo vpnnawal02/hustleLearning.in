@@ -18,7 +18,7 @@ export default function ChapterList({ chapters, subject, onSelectChapter }) {
                         className="w-full flex items-center gap-4 p-5 border-b border-gray-800 last:border-b-0 hover:bg-[#252525] transition-all group"
                     >
                         {/* Chapter Number Badge */}
-                        <div className="flex-shrink-0 w-12 h-12 bg-[#FFC107]/10 rounded-lg flex items-center justify-center group-hover:bg-[#FFC107]/20 transition-colors">
+                        <div className="flex-shrink-0 w-12 h-12 bg-[#FFC107]/10 rounded-md flex items-center justify-center group-hover:bg-[#FFC107]/20 transition-colors">
                             <span className="text-[#FFC107] font-bold text-lg">
                                 {String(chapter.id).padStart(2, '0')}
                             </span>

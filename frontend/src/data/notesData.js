@@ -741,5 +741,14 @@ export const sampleNotes = {
             pdfUrl: "/pdfs/class9-ss-ch1-notes.pdf",
             componentPath: "class9/socialScience/FrenchRevolution" // Must match registry key
         },
+    ],
+    "9-Social Science-2": [
+        {
+            id: "socialism-in-europe-and-the-russian-revolution",
+            class: "class-9",
+            title: "Socialism in Europe and the Russian Revolution",
+            pdfUrl: "/pdfs/class9-ss-ch1-notes.pdf",
+            componentPath: "class9/socialScience/RussianRevolution",
+        },
     ]
 };

@@ -57,7 +57,7 @@ export default function NotesList({ notes, chapter }) {
                         <div className="flex flex-col lg:flex-row lg:items-center gap-4">
 
                             <div className="flex-shrink-0">
-                                <div className="w-16 h-16 bg-red-500/10 rounded-lg flex items-center justify-center">
+                                <div className="w-16 h-16 bg-red-500/10 rounded-md flex items-center justify-center">
                                     <span className="text-3xl">📄</span>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@ export default function NotesList({ notes, chapter }) {
                                     {note.title}
                                 </h3>
 
-                                <div className="flex flex-wrap gap-4 text-sm">
+                                {/* <div className="flex flex-wrap gap-4 text-sm">
                                     <span className="flex items-center gap-1 text-gray-400">
                                         <span>📊</span> {note.fileSize}
                                     </span>
@@ -81,25 +81,23 @@ export default function NotesList({ notes, chapter }) {
                                         }`}>
                                         <span>🌐</span> {note.language}
                                     </span>
-                                </div>
+                                </div> */}
                             </div>
 
                             <div className="flex gap-3 flex-shrink-0">
                                 {/* View Notes Button */}
                                 <button
                                     onClick={() => handleViewNote(note)}
-                                    className="px-4 py-2 bg-[#FFC107] text-[#121212] font-semibold rounded-lg hover:bg-[#FFD54F] transition-all flex items-center gap-2"
+                                    className="px-4 py-2 bg-[#FFC107] text-[#121212] font-semibold rounded-md hover:bg-[#FFD54F] transition-all flex items-center gap-2"
                                 >
-                                    <span>📖</span>
                                     View Notes
                                 </button>
 
                                 {/* Download Button */}
                                 <button
                                     onClick={() => handleDownload(note)}
-                                    className="px-4 py-2 bg-[#121212] border border-gray-700 text-white rounded-lg hover:border-[#FFC107] hover:text-[#FFC107] transition-all flex items-center gap-2"
+                                    className="px-4 py-2 bg-[#121212] border border-gray-700 text-white rounded-md hover:border-[#FFC107] hover:text-[#FFC107] transition-all flex items-center gap-2"
                                 >
-                                    <span>⬇️</span>
                                     Download
                                 </button>
                             </div>

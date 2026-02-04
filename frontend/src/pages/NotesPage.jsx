@@ -4,7 +4,7 @@ import ClassSelection from '../components/Notes/ClassSelection';
 import SubjectSelection from '../components/Notes/SubjectSelection';
 import ChapterList from '../components/Notes/ChapterList';
 import NotesList from '../components/Notes/NotesList';
-import Breadcrumb from '../components/Notes/Breadcrumb';
+import Breadcrumb from '../components/Notes/BreadCrumb';
 import SearchFilter from '../components/Notes/SearchFilter';
 
 export default function NotesPage() {

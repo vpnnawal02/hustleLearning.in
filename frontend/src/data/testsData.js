@@ -732,7 +732,7 @@ export const testsStructure = {
 export const sampleTests = {
     '9-Social Science-1': [
         {
-            id: '9-ss-1-test-1',
+            id: 'french-revolution-test-1',
             title: 'French Revolution – Chapter Test',
             questionsCount: 10,
             difficulty: 'Easy–Medium',

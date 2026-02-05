@@ -9,18 +9,6 @@ export default function NotesList({ notes, chapter }) {
         // Navigate to notes view page
         navigate(`/notes/view/${note.id}`);
     };
-
-    const handleDownload = (note) => {
-        if (!isLoggedIn) {
-            alert('Please login to download notes');
-            window.location.href = '/login';
-            return;
-        }
-
-        console.log('Downloading:', note.title);
-        // Download logic here
-    };
-
     if (notes.length === 0) {
         return (
             <div className="animate-fade-in-up">
@@ -93,26 +81,9 @@ export default function NotesList({ notes, chapter }) {
                                     View Notes
                                 </button>
 
-                                {/* Download Button */}
-                                <button
-                                    onClick={() => handleDownload(note)}
-                                    className="px-4 py-2 bg-[#121212] border border-gray-700 text-white rounded-md hover:border-[#FFC107] hover:text-[#FFC107] transition-all flex items-center gap-2"
-                                >
-                                    Download
-                                </button>
                             </div>
                         </div>
 
-                        {!isLoggedIn && (
-                            <div className="mt-4 pt-4 border-t border-gray-800">
-                                <div className="flex items-center gap-2 text-sm text-gray-400">
-                                    <span>🔒</span>
-                                    <span>
-                                        <span className="text-[#FFC107] font-semibold">Login required</span> to download PDF
-                                    </span>
-                                </div>
-                            </div>
-                        )}
                     </div>
                 ))}
             </div>

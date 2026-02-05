@@ -5,6 +5,7 @@ import { authAPI } from '../components/services/api';
 export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [name, setName] = useState('');
+    const [selectedClass, setSelectedClass] = useState(''); // NEW
     const [otp, setOtp] = useState(['', '', '', '', '', '']);
     const [step, setStep] = useState('phone');
     const [loading, setLoading] = useState(false);
@@ -14,6 +15,8 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
 
     const { login } = useAuth();
     const otpRefs = useRef([]);
+
+    const classes = [6, 7, 8, 9, 10, 11, 12]; // Available classes
 
     useEffect(() => {
         if (step === 'otp' && timer > 0) {
@@ -46,10 +49,16 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
             return;
         }
 
+        // Validate class selection
+        if (!selectedClass) {
+            setError('Please select your class');
+            return;
+        }
+
         setLoading(true);
 
         try {
-            const result = await authAPI.sendOTP(phoneNumber, name.trim());
+            const result = await authAPI.sendOTP(phoneNumber, name.trim(), selectedClass); // Pass class
 
             if (result.success) {
                 setStep('otp');
@@ -82,7 +91,7 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
         setError('');
 
         try {
-            const result = await authAPI.verifyOTP(phoneNumber, otpCode, name.trim());
+            const result = await authAPI.verifyOTP(phoneNumber, otpCode, name.trim(), selectedClass); // Pass class
 
             if (result.success) {
                 login(result.user, result.token);
@@ -177,6 +186,26 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
                             />
                         </div>
 
+                        {/* Class Selection - NEW */}
+                        <div>
+                            <label className="block text-sm text-gray-400 mb-2">Your Class</label>
+                            <div className="grid grid-cols-4 gap-2">
+                                {classes.map((classNum) => (
+                                    <button
+                                        key={classNum}
+                                        type="button"
+                                        onClick={() => setSelectedClass(classNum)}
+                                        className={`py-2 px-3 rounded-lg font-semibold transition-all ${selectedClass === classNum
+                                                ? 'bg-yellow-400 text-black'
+                                                : 'bg-[#121212] border border-gray-700 text-gray-300 hover:border-yellow-400'
+                                            }`}
+                                    >
+                                        {classNum}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
                         {/* Phone Number Input */}
                         <div>
                             <label className="block text-sm text-gray-400 mb-2">Phone Number</label>
@@ -196,7 +225,7 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
 
                         <button
                             type="submit"
-                            disabled={loading || phoneNumber.length !== 10 || name.trim().length < 2}
+                            disabled={loading || phoneNumber.length !== 10 || name.trim().length < 2 || !selectedClass}
                             className="w-full py-3 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {loading ? 'Sending...' : 'Send OTP'}

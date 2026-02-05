@@ -738,7 +738,7 @@ export const sampleNotes = {
             id: "french-revolution",
             class: "class-9",
             title: "The French Revolution",
-            pdfUrl: "/pdfs/class9-ss-ch1-notes.pdf",
+            pdfUrl: "https://drive.google.com/uc?export=download&id=1bsirp9T6WBUNF2YqnxJPrvf9Fgy7TFcC",
             componentPath: "class9/socialScience/FrenchRevolution" // Must match registry key
         },
     ],

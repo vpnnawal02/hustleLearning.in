@@ -87,13 +87,7 @@ export default function NotesPage() {
                             <p className="text-gray-400">Access comprehensive notes for your class</p>
                         </div>
 
-                        {/* Search Toggle */}
-                        <button
-                            onClick={() => setShowSearch(!showSearch)}
-                            className="bg-[#1E1E1E] border border-gray-800 text-white px-4 py-2 rounded-lg hover:border-[#FFC107] transition-all"
-                        >
-                            🔍 {showSearch ? 'Hide Search' : 'Search'}
-                        </button>
+
                     </div>
 
                     {/* Search & Filter Component */}

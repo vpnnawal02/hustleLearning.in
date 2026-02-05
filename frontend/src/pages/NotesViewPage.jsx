@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { sampleNotes } from '../data/notesData';
 import { getNoteComponent } from '../components/NoteContent/index';
@@ -11,6 +11,7 @@ export default function NotesViewPage() {
     const navigate = useNavigate();
     const { isLoggedIn, user, token } = useAuth();
     const [showLoginModal, setShowLoginModal] = useState(false);
+    const [pendingDownload, setPendingDownload] = useState(false);
 
     // Find the note metadata
     const findNote = () => {
@@ -23,9 +24,19 @@ export default function NotesViewPage() {
 
     const note = findNote();
 
-    // Debug logs
+    // Get the component
+    const NoteComponent = note?.componentPath ? getNoteComponent(note.componentPath) : null;
+
     console.log('📝 Note ID from URL:', noteId);
     console.log('📄 Found note:', note);
+
+    // Auto-download when user logs in (if download was pending)
+    useEffect(() => {
+        if (isLoggedIn && pendingDownload) {
+            setPendingDownload(false);
+            performDownload();
+        }
+    }, [isLoggedIn, pendingDownload]);
 
     if (!note) {
         return (
@@ -45,20 +56,7 @@ export default function NotesViewPage() {
         );
     }
 
-    // Get the component
-    const NoteComponent = note.componentPath ? getNoteComponent(note.componentPath) : null;
-
-    console.log('🎨 Component Path:', note.componentPath);
-    console.log('🔧 Got Component:', NoteComponent);
-
-    const handleDownload = async () => {
-        // Check if user is logged in
-        if (!isLoggedIn) {
-            setShowLoginModal(true);
-            return;
-        }
-
-        // User is logged in - proceed with download
+    const performDownload = async () => {
         try {
             console.log('Downloading note:', note.id);
             console.log('User:', user);
@@ -67,10 +65,7 @@ export default function NotesViewPage() {
             const result = await authAPI.downloadNote(note.id, token);
 
             if (result.success) {
-                alert(`✅ Download Ready!\n\nNote: ${note.title}\nUser: ${user.name}\n\nIn production, this will download the PDF file.`);
-
-                // In production, trigger actual download:
-                // window.open(result.download_url, '_blank');
+                window.open(note.pdfUrl, "_blank")
             } else {
                 alert('❌ Download failed. Please try again.');
             }
@@ -80,12 +75,21 @@ export default function NotesViewPage() {
         }
     };
 
+    const handleDownload = async () => {
+        // Check if user is logged in
+        if (!isLoggedIn) {
+            setPendingDownload(true);
+            setShowLoginModal(true);
+            return;
+        }
+
+        // User is logged in - proceed with download
+        await performDownload();
+    };
+
     const handleLoginSuccess = () => {
-        // After successful login, close modal and trigger download
+        // Just close the modal - useEffect will handle download
         setShowLoginModal(false);
-        setTimeout(() => {
-            handleDownload();
-        }, 300);
     };
 
     return (
@@ -181,7 +185,10 @@ export default function NotesViewPage() {
             {showLoginModal && (
                 <LoginModal
                     isOpen={showLoginModal}
-                    onClose={() => setShowLoginModal(false)}
+                    onClose={() => {
+                        setShowLoginModal(false);
+                        setPendingDownload(false);
+                    }}
                     onLoginSuccess={handleLoginSuccess}
                 />
             )}

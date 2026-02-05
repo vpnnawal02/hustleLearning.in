@@ -128,12 +128,12 @@ export default function TestsPage() {
                                         <h3 className="text-lg font-semibold text-white">
                                             {test.title}
                                         </h3>
-                                        <div className="flex flex-wrap gap-3 text-xs sm:text-sm text-gray-400">
+                                        {/* <div className="flex flex-wrap gap-3 text-xs sm:text-sm text-gray-400">
                                             <span>🧮 {test.questionsCount} questions</span>
                                             <span>⏱️ {test.duration}</span>
                                             <span>🎯 Difficulty: {test.difficulty}</span>
                                             <span>🌐 Mode: Online only</span>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     <button

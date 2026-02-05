@@ -36,25 +36,25 @@ export default function NavigationBar() {
                         <div className="hidden md:flex space-x-10">
                             <Link
                                 to="/"
-                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.5 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                             >
                                 HOME
                             </Link>
                             <Link
                                 to="/notes"
-                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.5 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                             >
                                 NOTES
                             </Link>
                             <Link
                                 to="/tests"
-                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.5 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                             >
                                 TESTS
                             </Link>
                             <Link
                                 to="/ncert"
-                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.5 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                             >
                                 NCERT SOLUTIONS
                             </Link>
@@ -65,14 +65,14 @@ export default function NavigationBar() {
                             {isLoggedIn ? (
                                 <>
                                     <div className="flex items-center gap-2 text-gray-300 text-sm">
-                                        <span className="w-8 h-8 bg-yellow-400 text-black rounded-full flex items-center justify-center font-bold">
+                                        <span className="w-6 h-6 bg-yellow-400 text-black rounded-full flex items-center justify-center font-bold">
                                             {user?.name?.charAt(0).toUpperCase() || 'U'}
                                         </span>
-                                        <span className="hidden lg:block font-medium">{user?.name || 'User'}</span>
+
                                     </div>
                                     <button
                                         onClick={handleLogout}
-                                        className="px-4 py-2 bg-red-500/90 text-white font-semibold rounded-lg hover:bg-red-600 transition-all"
+                                        className="text-red-600 cursor-pointer "
                                     >
                                         Logout
                                     </button>

@@ -2,34 +2,28 @@ import React from 'react';
 export default function WhyChooseUsSection() {
     const benefits = [
         {
-            icon: "🎓",
-            title: "Quality Content",
-            description: "Carefully curated and verified study materials created by experienced educators"
+            title: "What is this platform about?",
+            description: "We are an online learning platform designed to help students understand concepts clearly through structured courses, practical examples, and expert guidance. Our focus is on learning with clarity, not rote memorization."
         },
         {
-            icon: "⚡",
-            title: "Instant Access",
-            description: "Download and access all materials instantly after login. No waiting, no hassle"
+            title: "Who can use this platform?",
+            description: "Our courses are suitable for:School students, College students, Beginners in programming or technical fields and anyone looking to strengthen their fundamentals.No prior experience is required unless mentioned for a specific course."
         },
         {
-            icon: "📱",
-            title: "Mobile Friendly",
-            description: "Study on any device - phone, tablet, or computer. Learn on the go"
+            title: "Are the courses beginner-friendly?",
+            description: "Yes. All our courses are designed from basic to advanced level, making them suitable even for complete beginners."
         },
         {
-            icon: "🔒",
-            title: "Safe & Secure",
-            description: "Your data is protected with industry-standard security measures"
+            title: "Do you provide doubt support?",
+            description: "Yes. Students can ask doubts through: Dedicated doubt-solving sessions, comment sections under lessons and community or discussion forums"
         },
         {
-            icon: "🆓",
-            title: "Free to Start",
-            description: "Access core study materials without any subscription fees"
+            title: "Are there any free courses or trial content?",
+            description: "Yes. We provide free demo lessons and selected free content so students can experience the teaching style before enrolling."
         },
         {
-            icon: "🔄",
-            title: "Regular Updates",
-            description: "Content updated regularly to match latest syllabus and exam patterns"
+            title: "Can I access the courses on mobile?",
+            description: "Yes. Our platform is fully responsive and works smoothly on mobile, tablet, and desktop devices."
         }
     ];
 
@@ -40,27 +34,26 @@ export default function WhyChooseUsSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 animate-fade-in-up">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Why <span className="text-[#FFC107]">Hustle Learning?</span>
+                        Frequently asked  <span className="text-[#FFC107]">Questions</span>
                     </h2>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        We're committed to making quality education accessible to every student
+                        Got any questions? Maybe these will help
                     </p>
                 </div>
 
                 {/* Benefits Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex flex-col gap-2 w-full">
                     {benefits.map((benefit, index) => (
                         <div
                             key={index}
-                            className="bg-[#121212] border border-gray-800 rounded-xl p-6 hover:border-[#FFC107]/50 transition-all duration-300 animate-fade-in-up"
+                            className="bg-[#121212] border border-gray-800 rounded-xs p-3 hover:border-[#FFC107]/50 transition-all duration-300 animate-fade-in-up"
                             style={{ animationDelay: `${index * 100}ms` }}
                         >
-                            <div className="flex items-start gap-4">
+                            <div className="flex items-start gap-2">
                                 {/* Icon */}
-                                <div className="w-12 h-12 bg-[#FFC107]/10 rounded-md flex items-center justify-center flex-shrink-0">
+                                {/* <div className="w-12 h-12 bg-[#FFC107]/10 rounded-md flex items-center justify-center flex-shrink-0">
                                     <span className="text-2xl">{benefit.icon}</span>
-                                </div>
-
+                                </div> */}
                                 {/* Content */}
                                 <div>
                                     <h3 className="text-lg font-bold text-white mb-2">

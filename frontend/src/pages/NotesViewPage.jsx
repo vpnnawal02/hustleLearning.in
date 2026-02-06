@@ -3,13 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { sampleNotes } from '../data/notesData';
 import { getNoteComponent } from '../components/NoteContent/index';
 import { useAuth } from '../components/contexts/AuthContext';
-import { authAPI } from '../components/services/api';
 import LoginModal from '../components/LoginModal';
 
 export default function NotesViewPage() {
     const { noteId } = useParams();
     const navigate = useNavigate();
-    const { isLoggedIn, user, token } = useAuth();
+    const { isLoggedIn } = useAuth();
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [pendingDownload, setPendingDownload] = useState(false);
 
@@ -27,12 +26,9 @@ export default function NotesViewPage() {
     // Get the component
     const NoteComponent = note?.componentPath ? getNoteComponent(note.componentPath) : null;
 
-    console.log('📝 Note ID from URL:', noteId);
-    console.log('📄 Found note:', note);
-
     // Auto-download when user logs in (if download was pending)
     useEffect(() => {
-        if (isLoggedIn && pendingDownload) {
+        if (isLoggedIn && pendingDownload && note?.pdfUrl) {
             setPendingDownload(false);
             performDownload();
         }
@@ -56,39 +52,35 @@ export default function NotesViewPage() {
         );
     }
 
-    const performDownload = async () => {
-        try {
-            console.log('Downloading note:', note.id);
-            console.log('User:', user);
-            console.log('Token:', token);
-
-            const result = await authAPI.downloadNote(note.id, token);
-
-            if (result.success) {
-                window.open(note.pdfUrl, "_blank")
-            } else {
-                alert('❌ Download failed. Please try again.');
-            }
-        } catch (error) {
-            alert('❌ Network error. Please try again.');
-            console.error('Download error:', error);
+    const performDownload = () => {
+        if (!note.pdfUrl) {
+            alert('❌ PDF URL not available for this note');
+            return;
         }
+
+        console.log('📥 Opening PDF:', note.pdfUrl);
+
+        // Just open the PDF URL in a new tab
+        window.open(note.pdfUrl, '_blank');
+
+        console.log('✅ Download started!');
     };
 
-    const handleDownload = async () => {
+    const handleDownload = () => {
         // Check if user is logged in
         if (!isLoggedIn) {
+            console.log('⚠️ User not logged in, showing login modal');
             setPendingDownload(true);
             setShowLoginModal(true);
             return;
         }
 
         // User is logged in - proceed with download
-        await performDownload();
+        performDownload();
     };
 
     const handleLoginSuccess = () => {
-        // Just close the modal - useEffect will handle download
+        console.log('✅ Login successful, closing modal');
         setShowLoginModal(false);
     };
 
@@ -114,6 +106,9 @@ export default function NotesViewPage() {
                                         {note.title}
                                     </h1>
                                     <div className="flex flex-wrap gap-3 text-sm mt-1">
+                                        {note.subject && (
+                                            <span className="text-gray-400">📚 {note.subject}</span>
+                                        )}
                                         {note.fileSize && <span className="text-gray-400">📊 {note.fileSize}</span>}
                                         {note.pages && <span className="text-gray-400">📑 {note.pages} pages</span>}
                                         {note.language && (
@@ -151,6 +146,16 @@ export default function NotesViewPage() {
                             <h2 className="text-2xl font-bold mb-2">Content Not Available</h2>
                             <p className="text-gray-400 mb-2">This note's content hasn't been created yet.</p>
                             <p className="text-sm text-gray-500">Component Path: {note.componentPath || 'Not set'}</p>
+
+                            {/* Still allow download even if preview not available */}
+                            {note.pdfUrl && (
+                                <button
+                                    onClick={handleDownload}
+                                    className="mt-6 bg-[#FFC107] text-[#121212] px-6 py-3 rounded-lg font-semibold hover:bg-[#FFD54F] transition-all"
+                                >
+                                    Download PDF Anyway
+                                </button>
+                            )}
                         </div>
                     </div>
                 )}

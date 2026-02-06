@@ -1,6 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../components/contexts/AuthContext';
+import { authAPI } from '../components/services/api';
 
 export default function Login() {
+    const navigate = useNavigate();
+    const { login } = useAuth();
+
     const [step, setStep] = useState(1); // 1: Form, 2: OTP
     const [formData, setFormData] = useState({
         name: '',
@@ -79,15 +85,31 @@ export default function Login() {
         if (validateForm()) {
             setIsSubmitting(true);
 
-            // Simulate API call to send OTP
-            setTimeout(() => {
-                console.log('OTP sent to:', formData.phone);
+            try {
+                console.log('📤 Sending OTP to:', formData.phone);
+
+                const result = await authAPI.sendOTP(
+                    formData.phone,
+                    formData.name,
+                    parseInt(formData.class)
+                );
+
+                console.log('✅ OTP Send Result:', result);
+
+                if (result.success) {
+                    setStep(2);
+                    setResendTimer(30);
+                    // Focus first OTP input
+                    setTimeout(() => otpInputRefs.current[0]?.focus(), 100);
+                } else {
+                    setErrors({ phone: result.message || 'Failed to send OTP' });
+                }
+            } catch (error) {
+                console.error('❌ Send OTP Error:', error);
+                setErrors({ phone: error.response?.data?.detail || 'Failed to send OTP. Please try again.' });
+            } finally {
                 setIsSubmitting(false);
-                setStep(2);
-                setResendTimer(30);
-                // Focus first OTP input
-                setTimeout(() => otpInputRefs.current[0]?.focus(), 100);
-            }, 1500);
+            }
         }
     };
 
@@ -146,25 +168,64 @@ export default function Login() {
 
         setIsSubmitting(true);
 
-        // Simulate API call
-        setTimeout(() => {
-            // For demo, accept any 6-digit OTP
-            console.log('Verifying OTP:', otpValue);
-            console.log('User data:', formData);
-            alert('Login successful! Welcome to Hustle Learning 🎉');
+        try {
+            console.log('🔐 Verifying OTP:', otpValue);
+
+            const result = await authAPI.verifyOTP(
+                formData.phone,
+                otpValue,
+                formData.name,
+                parseInt(formData.class)
+            );
+
+            console.log('✅ Verify Result:', result);
+
+            if (result.success) {
+                // Login with AuthContext
+                login(result.user, result.token);
+
+                console.log('🎉 Login successful!');
+
+                // Show success message
+                alert(`Welcome to Hustle Learning, ${result.user.name}! 🎉`);
+
+                // Redirect to home or profile
+                navigate('/');
+            } else {
+                setOtpError(result.message || 'Invalid OTP');
+            }
+        } catch (error) {
+            console.error('❌ Verify OTP Error:', error);
+            setOtpError(error.response?.data?.detail || 'Verification failed. Please try again.');
+        } finally {
             setIsSubmitting(false);
-            // Redirect to dashboard or home
-        }, 1500);
+        }
     };
 
     // Resend OTP
-    const handleResendOTP = () => {
-        setOtp(['', '', '', '', '', '']);
-        setOtpError('');
-        setResendTimer(30);
-        console.log('Resending OTP to:', formData.phone);
-        alert('OTP sent again!');
-        otpInputRefs.current[0]?.focus();
+    const handleResendOTP = async () => {
+        try {
+            console.log('🔄 Resending OTP...');
+
+            const result = await authAPI.sendOTP(
+                formData.phone,
+                formData.name,
+                parseInt(formData.class)
+            );
+
+            if (result.success) {
+                setOtp(['', '', '', '', '', '']);
+                setOtpError('');
+                setResendTimer(30);
+                alert('OTP sent again!');
+                otpInputRefs.current[0]?.focus();
+            } else {
+                alert(result.message || 'Failed to resend OTP');
+            }
+        } catch (error) {
+            console.error('❌ Resend Error:', error);
+            alert('Failed to resend OTP. Please try again.');
+        }
     };
 
     return (
@@ -303,8 +364,8 @@ export default function Login() {
                                     type="submit"
                                     disabled={isSubmitting}
                                     className={`w-full bg-[#FFC107] text-[#121212] font-semibold py-3 rounded-lg transition-all duration-300 ${isSubmitting
-                                            ? 'opacity-50 cursor-not-allowed'
-                                            : 'hover:bg-[#FFD54F] hover:scale-[1.02] shadow-lg hover:shadow-[#FFC107]/50'
+                                        ? 'opacity-50 cursor-not-allowed'
+                                        : 'hover:bg-[#FFD54F] hover:scale-[1.02] shadow-lg hover:shadow-[#FFC107]/50'
                                         }`}
                                 >
                                     {isSubmitting ? (
@@ -367,8 +428,8 @@ export default function Login() {
                                 onClick={handleVerifyOTP}
                                 disabled={isSubmitting}
                                 className={`w-full bg-[#FFC107] text-[#121212] font-semibold py-3 rounded-lg transition-all duration-300 mb-4 ${isSubmitting
-                                        ? 'opacity-50 cursor-not-allowed'
-                                        : 'hover:bg-[#FFD54F] hover:scale-[1.02] shadow-lg hover:shadow-[#FFC107]/50'
+                                    ? 'opacity-50 cursor-not-allowed'
+                                    : 'hover:bg-[#FFD54F] hover:scale-[1.02] shadow-lg hover:shadow-[#FFC107]/50'
                                     }`}
                             >
                                 {isSubmitting ? (
@@ -402,7 +463,11 @@ export default function Login() {
 
                             {/* Change Number */}
                             <button
-                                onClick={() => setStep(1)}
+                                onClick={() => {
+                                    setStep(1);
+                                    setOtp(['', '', '', '', '', '']);
+                                    setOtpError('');
+                                }}
                                 className="w-full mt-4 text-gray-400 text-sm hover:text-[#FFC107] transition-colors"
                             >
                                 ← Change Phone Number
@@ -423,9 +488,12 @@ export default function Login() {
                 {step === 1 && (
                     <p className="text-center text-gray-400 mt-6 animate-fade-in-up delay-500">
                         Already have an account?{' '}
-                        <a href="#" className="text-[#FFC107] font-semibold hover:underline">
+                        <button
+                            onClick={() => setStep(1)}
+                            className="text-[#FFC107] font-semibold hover:underline"
+                        >
                             Sign In
-                        </a>
+                        </button>
                     </p>
                 )}
             </div>

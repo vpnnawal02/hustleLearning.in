@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import UserProfile from './pages/UserProfile';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/tests/view/:testId" element={<TestViewPage />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/profile" element={<UserProfile />} />
         </Routes>
         <Footer />
         <ScrollToTop />

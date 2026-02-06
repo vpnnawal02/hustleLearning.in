@@ -18,18 +18,30 @@ export const AuthProvider = ({ children }) => {
 
     // Check if user is logged in on mount
     useEffect(() => {
+
         const storedToken = localStorage.getItem('auth_token');
         const storedUser = localStorage.getItem('user_data');
-
         if (storedToken && storedUser) {
-            setToken(storedToken);
-            setUser(JSON.parse(storedUser));
-            setIsLoggedIn(true);
+            try {
+                const parsedUser = JSON.parse(storedUser);
+                setToken(storedToken);
+                setUser(parsedUser);
+                setIsLoggedIn(true);
+            } catch (error) {
+                console.error('❌ Failed to parse user data:', error);
+                // Clear corrupted data
+                localStorage.removeItem('auth_token');
+                localStorage.removeItem('user_data');
+            }
+        } else {
+            console.log('⚠️ No stored credentials found');
         }
+
         setLoading(false);
     }, []);
 
     const login = (userData, authToken) => {
+
         setUser(userData);
         setToken(authToken);
         setIsLoggedIn(true);
@@ -40,6 +52,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = () => {
+
         setUser(null);
         setToken(null);
         setIsLoggedIn(false);
@@ -58,9 +71,23 @@ export const AuthProvider = ({ children }) => {
         loading
     };
 
+    // Don't render children until loading is complete
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-yellow-500 mx-auto"></div>
+                    <p className="text-gray-400 mt-4">Loading...</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     );
 };
+
+export default AuthContext;

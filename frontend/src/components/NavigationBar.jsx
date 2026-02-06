@@ -54,7 +54,7 @@ export default function NavigationBar() {
                             </Link>
                             <Link
                                 to="/ncert"
-                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.5 after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+                                className="relative inline-block font-bold text-gray-300 transition-colors duration-300 hover:text-yellow-400 after:content-[''] after:absolute after:left-0 after:-bottom-5.5   after:h-1 after:w-full after:bg-yellow-400 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                             >
                                 NCERT SOLUTIONS
                             </Link>
@@ -65,22 +65,17 @@ export default function NavigationBar() {
                             {isLoggedIn ? (
                                 <>
                                     <div className="flex items-center gap-2 text-gray-300 text-sm">
-                                        <span className="w-6 h-6 bg-yellow-400 text-black rounded-full flex items-center justify-center font-bold">
-                                            {user?.name?.charAt(0).toUpperCase() || 'U'}
-                                        </span>
-
+                                        <a href="/profile">
+                                            <span className="w-10 h-10 bg-yellow-400 text-black rounded-full flex items-center justify-center font-bold">
+                                                {user?.name?.charAt(0).toUpperCase() || 'U'}
+                                            </span>
+                                        </a>
                                     </div>
-                                    <button
-                                        onClick={handleLogout}
-                                        className="text-red-600 cursor-pointer "
-                                    >
-                                        Logout
-                                    </button>
                                 </>
                             ) : (
                                 <button
                                     onClick={handleLoginClick}
-                                    className="px-5 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all"
+                                    className="px-5 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-500 transition-all "
                                 >
                                     Login
                                 </button>

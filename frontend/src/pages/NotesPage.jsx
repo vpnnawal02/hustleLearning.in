@@ -81,8 +81,8 @@ export default function NotesPage() {
                 <div className="mb-8">
                     <div className="flex justify-between items-center mb-4">
                         <div>
-                            <h1 className="text-4xl font-bold text-white mb-2">
-                                📚 Study <span className="text-[#FFC107]">Notes</span>
+                            <h1 className="flex items-center text-4xl font-bold text-white mb-2">
+                                Study <span className="text-[#FFC107]">Notes</span>
                             </h1>
                             <p className="text-gray-400">Access comprehensive notes for your class</p>
                         </div>

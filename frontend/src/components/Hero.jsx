@@ -37,13 +37,13 @@ export default function Hero() {
                         {/* CTA Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-700">
                             <a href="/login">
-                                <button className="bg-primary text-dark px-8 py-4 rounded-md font-semibold text-lg hover:bg-[#FFD54F] hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/50 cursor-pointer">
+                                <button className="bg-primary text-dark px-8 py-4 rounded-xs font-semibold text-lg hover:bg-[#FFD54F] hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/50 cursor-pointer">
                                     Start Learning
                                 </button>
                             </a>
-                            {/* <a href=""><button className="bg-transparent border-2 border-primary text-primary px-8 py-4 rounded-md font-semibold text-lg hover:bg-primary hover:text-dark transition-all duration-300 cursor-pointer">
+                            <a href="/notes"><button className="bg-transparent border border-primary text-primary px-8 py-4 rounded-xs font-semibold text-lg hover:bg-primary hover:text-dark transition-all duration-300 cursor-pointer">
                                 Browse Notes
-                            </button></a> */}
+                            </button></a>
 
                         </div>
 
@@ -99,9 +99,9 @@ export default function Hero() {
                         {/* Floating Cards */}
                         <div className="absolute top-10 -right-5 bg-dark-gray border border-primary/30 rounded-md p-4 shadow-xl animate-float delay-300">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
+                                {/* <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
                                     <span className="text-2xl">📚</span>
-                                </div>
+                                </div> */}
                                 <div>
                                     <div className="text-xs text-gray-400">New Notes</div>
                                     <div className="text-sm font-bold text-white">Based on CBSE 2026-2027</div>

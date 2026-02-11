@@ -54,17 +54,11 @@ export default function TestViewPage() {
                             <h1 className="text-lg sm:text-xl font-bold text-white">
                                 {test.title}
                             </h1>
-                            <div className="flex flex-wrap gap-3 text-xs text-gray-400 mt-1">
-                                <span>🧮 {test.questionsCount} questions</span>
-                                <span>⏱️ {test.duration}</span>
-                                <span>🎯 {test.difficulty}</span>
-                                <span>🌐 Online only</span>
-                            </div>
                         </div>
                     </div>
 
                     <div className="text-xs text-gray-400">
-                        Note: Tests are practice-only. No PDF download available.
+                        {/* Note: Tests are practice-only. No PDF download available. */}
                     </div>
                 </div>
             </div>
@@ -75,7 +69,7 @@ export default function TestViewPage() {
             ) : (
                 <div className="min-h-screen flex items-center justify-center">
                     <div className="text-center text-white">
-                        <div className="text-6xl mb-4">📭</div>
+                        <div className="text-6xl mb-4"></div>
                         <h2 className="text-2xl font-bold mb-2">Test Content Not Available</h2>
                         <p className="text-gray-400">
                             The test metadata exists but its JSX component has not been created yet.

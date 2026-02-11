@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-b from-dark via-dark to-dark-gray">
+        <section className="flex flex-col  min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-b from-dark via-dark to-dark-gray">
 
             {/* Background decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
@@ -14,41 +14,41 @@ export default function Hero() {
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
 
                     {/* Left Content */}
-                    <div className="text-center lg:text-left space-y-8 animate-fade-in">
+                    <div className="text-center lg:text-left space-y-8   ">
 
                         {/* Badge */}
-                        <div className="inline-flex items-center gap-2 bg-dark-gray border border-primary/20 rounded-full px-4 py-2 animate-fade-in-up delay-200">
+                        <div className="inline-flex items-center gap-2 bg-dark-gray border border-primary/20 rounded-full px-4 py-2   -up delay-200">
                             <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                             <span className="text-sm text-gray-300">For Class 6-12 Students</span>
                         </div>
 
                         {/* Main Headline */}
-                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in-up delay-300">
+                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight   -up delay-300">
                             <span className="text-white">Learn Smart.</span>
                             <br />
                             <span className="text-primary">Hustle Hard.</span>
                         </h1>
 
                         {/* Subheadline */}
-                        <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 animate-fade-in-up delay-500">
+                        <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0   -up delay-500">
                             Built for students who are ready to work hard—but want learning that actually makes sense.
                         </p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-700">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start   -up delay-700">
                             <a href="/login">
                                 <button className="bg-primary text-dark px-8 py-4 rounded-xs font-semibold text-lg hover:bg-[#FFD54F] hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-primary/50 cursor-pointer">
                                     Start Learning
                                 </button>
                             </a>
-                            <a href="/notes"><button className="bg-transparent border border-primary text-primary px-8 py-4 rounded-xs font-semibold text-lg hover:bg-primary hover:text-dark transition-all duration-300 cursor-pointer">
+                            {/* <a href="/notes"><button className="bg-transparent border border-primary text-primary px-8 py-4 rounded-xs font-semibold text-lg hover:bg-primary hover:text-dark transition-all duration-300 cursor-pointer">
                                 Browse Notes
-                            </button></a>
+                            </button></a> */}
 
                         </div>
 
                         {/* Stats */}
-                        <div className="flex flex-wrap gap-8 justify-center lg:justify-start pt-8 animate-fade-in-up delay-900">
+                        <div className="flex flex-wrap gap-8 justify-center lg:justify-start pt-8   -up delay-900">
                             <div className="text-center lg:text-left">
                                 <div className="text-3xl font-bold text-primary">1000+</div>
                                 <div className="text-sm text-gray-400">Study Notes</div>
@@ -65,7 +65,7 @@ export default function Hero() {
                     </div>
 
                     {/* Right Illustration */}
-                    <div className="relative animate-fade-in-right delay-500 hidden lg:block">
+                    <div className="relative   -right delay-500 hidden lg:block">
                         <div className="relative z-10">
                             {/* Placeholder for illustration */}
                             <div className="relative">
@@ -125,7 +125,7 @@ export default function Hero() {
             </div>
 
             {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className=" bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
                 <div className="text-primary">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />

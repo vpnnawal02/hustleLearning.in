@@ -733,11 +733,27 @@ export const sampleTests = {
     '9-Social Science-1': [
         {
             id: 'french-revolution-test-1',
-            title: 'French Revolution – Chapter Test',
+            title: 'French Revolution – Test-1',
             questionsCount: 10,
             difficulty: 'Easy–Medium',
             duration: '15 min',
-            componentPath: 'class9/socialScience/FrenchRevolutionTest',
+            componentPath: 'class9/socialScience/FrenchRevolutionTest1',
+        },
+        {
+            id: 'french-revolution-test-2',
+            title: 'French Revolution – Test-2',
+            questionsCount: 10,
+            difficulty: 'Easy–Medium',
+            duration: '15 min',
+            componentPath: 'class9/socialScience/FrenchRevolutionTest2',
+        },
+        {
+            id: 'french-revolution-test-mcqs',
+            title: 'French Revolution – Test - MCQs',
+            questionsCount: 10,
+            difficulty: 'Easy–Medium',
+            duration: '15 min',
+            componentPath: 'class9/socialScience/FrenchRevolutionTestMcqs',
         },
     ],
 };

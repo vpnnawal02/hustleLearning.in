@@ -5,16 +5,15 @@ export default function TestClassSelection({ classes, selectedClass, onSelectCla
                 Select Class
             </h2>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-4 lg:flex lg:flex-col gap-3 lg:gap-0">
                 {classes.map((cls) => {
                     const isActive = selectedClass === cls;
                     return (
                         <button
                             key={cls}
                             onClick={() => onSelectClass(cls)}
-                            className={`relative px-4 py-3 rounded-xl border text-left transition-all
-                ${isActive
-                                    ? 'border-[#FFC107] bg-[#FFC107]/10 text-[#FFC107]'
+                            className={`relative px-4 py-3 md:py-1 lg:w-[80%] border-l text-left transition-all 
+                            ${isActive ? 'border-[#FFC107] bg-[#FFC107]/10 text-[#FFC107]'
                                     : 'border-gray-700 bg-[#1E1E1E] text-gray-200 hover:border-[#FFC107]/60 hover:bg-[#1E1E1E]/80'
                                 }`}
                         >

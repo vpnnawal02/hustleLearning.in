@@ -1,14 +1,44 @@
 import React from 'react';
+import maths_icon from '../../assets/imgs/icons/mathematics_icon.png'
+
 export default function SubjectSelection({ subjects, classNum, onSelectSubject }) {
     // Subject icons and colors
     const subjectConfig = {
-        "Mathematics": { icon: "🔢", color: "from-blue-500/20 to-blue-600/20", emoji: "📐" },
-        "Science": { icon: "🔬", color: "from-green-500/20 to-green-600/20", emoji: "⚗️" },
-        "Physics": { icon: "⚛️", color: "from-purple-500/20 to-purple-600/20", emoji: "🌌" },
-        "Chemistry": { icon: "🧪", color: "from-pink-500/20 to-pink-600/20", emoji: "⚗️" },
-        "Biology": { icon: "🧬", color: "from-green-500/20 to-green-600/20", emoji: "🦠" },
-        "English": { icon: "📖", color: "from-yellow-500/20 to-yellow-600/20", emoji: "✍️" },
-        "Social Science": { icon: "🌍", color: "from-orange-500/20 to-orange-600/20", emoji: "🗺️" }
+        "Mathematics": {
+            icon: <img src={maths_icon} alt="" className='w-15 ' />,
+            color: "from-blue-500/20 to-blue-600/20",
+            emoji: "📐"
+        },
+        "Science": {
+            icon: "🔬",
+            color: "from-green-500/20 to-green-600/20",
+            emoji: "⚗️"
+        },
+        "Physics": {
+            icon: "⚛️",
+            color: "from-purple-500/20 to-purple-600/20",
+            emoji: "🌌"
+        },
+        "Chemistry": {
+            icon: "🧪",
+            color: "from-pink-500/20 to-pink-600/20",
+            emoji: "⚗️"
+        },
+        "Biology": {
+            icon: "🧬",
+            color: "from-green-500/20 to-green-600/20",
+            emoji: "🦠"
+        },
+        "English": {
+            icon: "📖",
+            color: "from-yellow-500/20 to-yellow-600/20",
+            emoji: "✍️"
+        },
+        "Social Science": {
+            icon: "🌍",
+            color: "from-orange-500/20 to-orange-600/20",
+            emoji: "🗺️"
+        }
     };
 
     return (

@@ -37,7 +37,7 @@ export default function FeaturesSection() {
             <div className="max-w-7xl mx-auto">
 
                 {/* Section Header */}
-                <div className="text-center mb-16 animate-fade-in-up">
+                <div className="text-center mb-16   -up">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Everything You Need to <span className="text-[#FFC107]">Excel</span>
                     </h2>
@@ -51,7 +51,7 @@ export default function FeaturesSection() {
                     {features.map((feature, index) => (
                         <div
                             key={index}
-                            className="bg-[#1E1E1E] border border-gray-800 rounded-xs p-8 hover:border-[#FFC107]/50 transition-all duration-300 hover:transform hover:scale-105 animate-fade-in-up"
+                            className="bg-[#1E1E1E] border border-gray-800 rounded-xs p-8 hover:border-[#FFC107]/50 transition-all duration-300 hover:transform hover:scale-105   -up"
                             style={{ animationDelay: `${index * 200}ms` }}
                         >
                             {/* Icon */}
@@ -83,7 +83,7 @@ export default function FeaturesSection() {
                 </div>
 
                 {/* Additional Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 animate-fade-in-up delay-700">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16   -up delay-700">
                     <div className="text-center p-6 bg-[#1E1E1E] rounded-xs border border-gray-800">
                         <div className="text-3xl font-bold text-[#FFC107] mb-2">7</div>
                         <div className="text-gray-400 text-sm">Classes Covered</div>

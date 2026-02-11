@@ -32,7 +32,7 @@ export default function WhyChooseUsSection() {
             <div className="max-w-7xl mx-auto">
 
                 {/* Section Header */}
-                <div className="text-center mb-16 animate-fade-in-up">
+                <div className="text-center mb-16   -up">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         Frequently asked  <span className="text-[#FFC107]">Questions</span>
                     </h2>
@@ -46,7 +46,7 @@ export default function WhyChooseUsSection() {
                     {benefits.map((benefit, index) => (
                         <div
                             key={index}
-                            className="bg-[#121212] border border-gray-800 rounded-xs p-3 hover:border-[#FFC107]/50 transition-all duration-300 animate-fade-in-up"
+                            className="bg-[#121212] border border-gray-800 rounded-xs p-3 hover:border-[#FFC107]/50 transition-all duration-300   -up"
                             style={{ animationDelay: `${index * 100}ms` }}
                         >
                             <div className="flex items-start gap-2">

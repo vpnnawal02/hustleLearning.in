@@ -11,16 +11,16 @@ export default function TestSubjectSelection({
                 Select Subject
             </h2>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-col gap-3 lg:gap-0 lg:w-[80%]">
                 {subjects.map((subj) => {
                     const isActive = selectedSubject === subj;
                     return (
                         <button
                             key={subj}
                             onClick={() => onSelectSubject(subj)}
-                            className={`px-4 py-2 rounded-full text-sm font-medium border transition-all
+                            className={`relative px-4 py-3 md:py-1 border-l text-left transition-all
                 ${isActive
-                                    ? 'border-[#FFC107] bg-[#FFC107]/15 text-[#FFC107]'
+                                    ? 'border-[#FFC107] bg-[#FFC107]/10 text-[#FFC107]'
                                     : 'border-gray-700 bg-[#1E1E1E] text-gray-200 hover:border-[#FFC107]/60 hover:bg-[#1E1E1E]/80'
                                 }`}
                         >

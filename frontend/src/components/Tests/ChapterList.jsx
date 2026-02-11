@@ -1,7 +1,7 @@
 export default function ChapterList({ chapters, subject, onSelectChapter }) {
     return (
         <div>
-            <h2 className="text-2xl font-bold text-white mb-6">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center w-full">
                 {subject} - <span className="text-[#FFC107]">Select Chapter</span>
             </h2>
 
